@@ -1,12 +1,15 @@
 package com.example.jobsearchsiteproject.model;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-public class Person extends BaseEntity{
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+
+@Data
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Person {
 
     private String firstName;
     private String lastName;
