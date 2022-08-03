@@ -13,11 +13,9 @@ import java.util.Date;
 @NoArgsConstructor
 public class Company extends BaseEntity {
 
-
     private String companyName;
     private String profileDescription;
     private Date foundationYear;
     private String companyURL;
-
 
 }

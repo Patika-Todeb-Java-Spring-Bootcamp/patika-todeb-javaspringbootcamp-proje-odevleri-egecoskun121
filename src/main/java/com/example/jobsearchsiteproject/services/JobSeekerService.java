@@ -8,9 +8,8 @@ import com.example.jobsearchsiteproject.model.JobSeeker;
 import com.example.jobsearchsiteproject.repo.JobSeekerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+
 
 import java.util.List;
 import java.util.Optional;

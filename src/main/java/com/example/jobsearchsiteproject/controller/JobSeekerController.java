@@ -49,6 +49,4 @@ public class JobSeekerController {
         return ResponseEntity.status(HttpStatus.OK).body("Related Job seeker deleted successfully");
     }
 
-
-
 }

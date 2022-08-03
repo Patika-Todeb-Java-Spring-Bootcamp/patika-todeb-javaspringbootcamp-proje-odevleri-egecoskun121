@@ -20,5 +20,4 @@ public class ExperienceDetail {
     private String jobLocationCountry;
     private String description;
 
-
 }
