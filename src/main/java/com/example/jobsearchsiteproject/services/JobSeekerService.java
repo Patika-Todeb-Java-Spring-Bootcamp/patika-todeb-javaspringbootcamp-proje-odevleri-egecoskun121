@@ -5,22 +5,29 @@ import com.example.jobsearchsiteproject.dto.JobSeekerDTO;
 import com.example.jobsearchsiteproject.exception.EntityNotFoundException;
 import com.example.jobsearchsiteproject.map.JobSeekerMapper;
 import com.example.jobsearchsiteproject.model.JobSeeker;
-import com.example.jobsearchsiteproject.repo.JobSeekerRepository;
-import lombok.RequiredArgsConstructor;
+import com.example.jobsearchsiteproject.repository.JobSeekerRepository;
+
+
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
+
 @Service
-@RequiredArgsConstructor
+@Slf4j
 public class JobSeekerService {
+
 
     private final JobSeekerRepository jobSeekerRepository;
 
+    @Autowired
+    public JobSeekerService(JobSeekerRepository jobSeekerRepository) {
+        this.jobSeekerRepository = jobSeekerRepository;
+    }
 
     public List<JobSeeker> getAllJobSeekers() {
         List<JobSeeker> allCourses = jobSeekerRepository.findAll();

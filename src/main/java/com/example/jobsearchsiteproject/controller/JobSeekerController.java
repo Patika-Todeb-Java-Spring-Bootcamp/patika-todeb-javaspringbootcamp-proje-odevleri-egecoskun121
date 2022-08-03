@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobseeker")
+@RequestMapping("/api/v1/jobseeker")
 public class JobSeekerController {
 
-    @Autowired
     private JobSeekerService jobSeekerService;
+
+    @Autowired
+    public JobSeekerController(JobSeekerService jobSeekerService) {
+        this.jobSeekerService = jobSeekerService;
+    }
 
     @GetMapping("/all")
     public ResponseEntity getAllJobSeekers(){

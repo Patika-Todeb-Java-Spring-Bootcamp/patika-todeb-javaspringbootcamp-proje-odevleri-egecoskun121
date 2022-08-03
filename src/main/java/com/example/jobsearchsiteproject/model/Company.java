@@ -10,8 +10,9 @@ import java.util.Date;
 
 @Data
 @RequiredArgsConstructor
-public class Company extends BaseEntity {
+public class Company {
 
+    private Long companyId;
     private String companyName;
     private String profileDescription;
     private Date foundationYear;
