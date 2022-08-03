@@ -8,7 +8,6 @@ import java.util.Date;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class EducationDetail {
 
     private String major;

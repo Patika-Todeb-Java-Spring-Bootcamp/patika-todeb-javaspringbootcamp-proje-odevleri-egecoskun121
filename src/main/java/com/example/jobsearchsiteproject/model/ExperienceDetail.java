@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @RequiredArgsConstructor
-@NoArgsConstructor
+
 public class ExperienceDetail {
 
     private boolean isCurrentJob;
