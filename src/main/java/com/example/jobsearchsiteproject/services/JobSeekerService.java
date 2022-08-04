@@ -42,13 +42,6 @@ public class JobSeekerService {
         });
     }
 
-    public JobSeeker getByFirstName(String firstName) {
-        Optional<JobSeeker> byId = jobSeekerRepository.findByFirstName(firstName);
-        return byId.orElseThrow(() -> {
-            log.error("Course not found by id : " + firstName);
-            return new EntityNotFoundException("Course", "id : " + firstName);
-        });
-    }
 
     public JobSeeker create(JobSeekerDTO jobSeekerDTO) {
         JobSeeker jobSeeker = JobSeekerMapper.toEntity(jobSeekerDTO);

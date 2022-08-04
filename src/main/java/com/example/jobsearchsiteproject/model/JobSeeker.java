@@ -12,18 +12,21 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="jobseekers")
+@Table(name="jobseeker")
 public class JobSeeker extends Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long jobSeekerId;
+    private Long Id;
+
     private double currentSalary;
     private boolean isSalaryMonthly;
     private String currency;
-    @OneToMany(mappedBy = "",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+
+    @OneToMany(mappedBy = "jobSeeker",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     private Set<ExperienceDetail> experienceDetailSet;
-    @OneToMany()
+
+    @OneToMany(mappedBy = "jobSeeker",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     private Set<EducationDetail> educationDetailSet;
 
 }

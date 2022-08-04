@@ -9,9 +9,11 @@ public class JobSeekerMapper {
         JobSeekerDTO jobSeekerDto = new JobSeekerDTO();
         jobSeekerDto.setCurrency(jobSeeker.getCurrency());
         jobSeekerDto.setCurrentSalary(jobSeeker.getCurrentSalary());
-        jobSeekerDto.setEducationDetail(jobSeeker.getEducationDetail());
-        jobSeekerDto.setExperienceDetail(jobSeeker.getExperienceDetail());
         jobSeekerDto.setSalaryMonthly(jobSeeker.isSalaryMonthly());
+        jobSeekerDto.setFirstName(jobSeeker.getFirstName());
+        jobSeekerDto.setLastName(jobSeeker.getLastName());
+        jobSeekerDto.setEmail(jobSeeker.getEmail());
+        jobSeekerDto.setGender(jobSeeker.getGender());
 
         return jobSeekerDto;
     }
@@ -20,10 +22,12 @@ public class JobSeekerMapper {
         JobSeeker jobSeeker = new JobSeeker();
         jobSeeker.setCurrency(jobSeekerDTO.getCurrency());
         jobSeeker.setCurrentSalary(jobSeekerDTO.getCurrentSalary());
-        jobSeeker.setEducationDetail(jobSeekerDTO.getEducationDetail());
-        jobSeeker.setExperienceDetail(jobSeekerDTO.getExperienceDetail());
         jobSeeker.setSalaryMonthly(jobSeekerDTO.isSalaryMonthly());
-
+        jobSeeker.setFirstName(jobSeekerDTO.getFirstName());
+        jobSeeker.setLastName(jobSeekerDTO.getLastName());
+        jobSeeker.setEmail(jobSeekerDTO.getEmail());
+        jobSeeker.setContactNumber(jobSeekerDTO.getContactNumber());
+        jobSeeker.setGender(jobSeekerDTO.getGender());
         return jobSeeker;
     }
 

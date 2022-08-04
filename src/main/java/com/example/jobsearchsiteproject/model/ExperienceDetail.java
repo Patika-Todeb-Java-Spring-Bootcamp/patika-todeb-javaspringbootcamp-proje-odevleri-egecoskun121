@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -19,8 +16,10 @@ public class ExperienceDetail {
     @Id
     private Long id;
 
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name="jobseeker_id",nullable = false)
     private JobSeeker jobSeeker;
+
     private boolean isCurrentJob;
     private Date startDate;
     private Date endDate;
