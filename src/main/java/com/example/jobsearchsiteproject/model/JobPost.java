@@ -22,10 +22,8 @@ public class JobPost {
     private Date createdDate;
     private String jobDescription;
     private boolean isActive;
-
     @OneToMany
     private Set<JobLocation> jobLocation;
-
     @ManyToOne
     private Company company;
 
