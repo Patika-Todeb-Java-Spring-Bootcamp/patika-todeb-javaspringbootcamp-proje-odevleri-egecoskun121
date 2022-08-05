@@ -30,8 +30,8 @@ public class JobSeekerService {
     }
 
     public List<JobSeeker> getAllJobSeekers() {
-        List<JobSeeker> allCourses = jobSeekerRepository.findAll();
-        return allCourses;
+        List<JobSeeker> allJobSeekers = jobSeekerRepository.findAll();
+        return allJobSeekers;
     }
 
     public JobSeeker getById(Long id) {
