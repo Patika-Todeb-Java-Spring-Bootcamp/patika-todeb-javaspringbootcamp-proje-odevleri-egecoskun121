@@ -17,10 +17,6 @@ public class EducationDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "jobseeker_id",referencedColumnName = "id")
-    private JobSeeker jobSeeker;
-
     private String major;
     private String universityName;
     private String startDate;

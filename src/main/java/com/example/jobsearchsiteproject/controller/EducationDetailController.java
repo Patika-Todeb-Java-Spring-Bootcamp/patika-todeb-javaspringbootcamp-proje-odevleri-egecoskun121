@@ -37,17 +37,19 @@ public class EducationDetailController {
 
     @RequestMapping(value="/create/{id}",method = RequestMethod.POST)
     public ResponseEntity createEducationDetail(@RequestBody EducationDetailDTO educationDetailDTO,@PathVariable("id") Long id){
+
         EducationDetail educationDetail = educationDetailMapper.toEntity(educationDetailDTO);
         JobSeeker jobSeeker=jobSeekerService.getById(id);
-        educationDetail.setJobSeeker(jobSeeker);
+
+       jobSeeker.getEducationDetailSet().add(educationDetail);
+       jobSeeker.setEducationDetailSet(jobSeeker.getEducationDetailSet());
+
         educationDetail = educationDetailService.create(educationDetailDTO);
 
 
-        jobSeeker.getEducationDetailSet().add(educationDetail);
-
         if(educationDetail==null){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Job seeker could not be created successfully");
+                    .body("Education detail could not be created successfully");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(educationDetail);
     }

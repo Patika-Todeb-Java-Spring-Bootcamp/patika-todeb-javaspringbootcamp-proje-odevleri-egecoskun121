@@ -1,14 +1,14 @@
 package com.example.jobsearchsiteproject.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -23,10 +23,12 @@ public class JobSeeker extends Person{
     private boolean isSalaryMonthly;
     private String currency;
 
-    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<ExperienceDetail> experienceDetailSet;
 
-    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<EducationDetail> educationDetailSet;
 
 }

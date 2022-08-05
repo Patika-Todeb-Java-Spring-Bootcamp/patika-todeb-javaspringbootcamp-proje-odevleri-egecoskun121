@@ -47,7 +47,7 @@ public class JobSeekerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(jobSeeker);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete")
     public ResponseEntity deleteJobSeeker(@RequestParam(name = "id") Long id) {
         jobSeekerService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Related Job seeker deleted successfully");
