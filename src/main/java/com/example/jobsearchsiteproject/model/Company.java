@@ -5,11 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Data
@@ -24,5 +22,8 @@ public class Company {
     private String profileDescription;
     private Date foundationYear;
     private String companyURL;
+
+    @OneToMany
+    private Set<JobPost> jobPostSet;
 
 }
