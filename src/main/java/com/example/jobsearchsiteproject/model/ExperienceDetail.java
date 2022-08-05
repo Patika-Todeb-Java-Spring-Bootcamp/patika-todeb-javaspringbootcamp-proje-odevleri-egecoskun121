@@ -14,6 +14,7 @@ import java.util.Date;
 public class ExperienceDetail {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
