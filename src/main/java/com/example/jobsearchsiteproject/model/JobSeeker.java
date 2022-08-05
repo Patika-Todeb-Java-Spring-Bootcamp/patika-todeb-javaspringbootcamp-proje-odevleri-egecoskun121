@@ -23,10 +23,10 @@ public class JobSeeker extends Person{
     private boolean isSalaryMonthly;
     private String currency;
 
-    @OneToMany(mappedBy = "jobSeeker",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     private Set<ExperienceDetail> experienceDetailSet;
 
-    @OneToMany(mappedBy = "jobSeeker",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     private Set<EducationDetail> educationDetailSet;
 
 }

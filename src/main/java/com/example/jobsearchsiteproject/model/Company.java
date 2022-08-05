@@ -20,7 +20,7 @@ public class Company {
     private Long id;
     private String companyName;
     private String profileDescription;
-    private Date foundationYear;
+    private Integer foundationYear;
     private String companyURL;
 
     @OneToMany

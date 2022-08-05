@@ -18,13 +18,13 @@ public class EducationDetail {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "jobseeker_id",nullable = false)
+    @JoinColumn(name = "jobseeker_id",referencedColumnName = "id")
     private JobSeeker jobSeeker;
 
     private String major;
     private String universityName;
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private double gpa;
 
 }
