@@ -10,14 +10,14 @@ import java.util.Date;
 @Data
 @RequiredArgsConstructor
 @Entity
-@Table(name = "Experience Details")
+@Table(name = "experience_detail")
 public class ExperienceDetail {
 
     @Id
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name="jobseeker_id",nullable = false)
+    @JoinColumn(name="jobseeker_id")
     private JobSeeker jobSeeker;
 
     private boolean isCurrentJob;
