@@ -27,7 +27,7 @@ public class JobSeeker extends Person{
     @OneToMany(cascade = CascadeType.ALL)
     private Set<ExperienceDetail> experienceDetailSet;
 
-    @JsonIgnore
+
     @OneToMany(cascade = CascadeType.ALL)
     private Set<EducationDetail> educationDetailSet;
 
