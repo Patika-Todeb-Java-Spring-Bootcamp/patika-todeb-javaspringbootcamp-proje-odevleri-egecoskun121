@@ -2,7 +2,10 @@ package com.example.jobsearchsiteproject.controller;
 
 
 import com.example.jobsearchsiteproject.dto.JobSeekerDTO;
+import com.example.jobsearchsiteproject.model.ExperienceDetail;
+import com.example.jobsearchsiteproject.model.JobPost;
 import com.example.jobsearchsiteproject.model.JobSeeker;
+import com.example.jobsearchsiteproject.services.JobPostService;
 import com.example.jobsearchsiteproject.services.JobSeekerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,10 +19,12 @@ import java.util.List;
 public class JobSeekerController {
 
     private JobSeekerService jobSeekerService;
+    private JobPostService jobPostService;
 
     @Autowired
-    public JobSeekerController(JobSeekerService jobSeekerService) {
+    public JobSeekerController(JobSeekerService jobSeekerService,JobPostService jobPostService) {
         this.jobSeekerService = jobSeekerService;
+        this.jobPostService=jobPostService;
     }
 
     @GetMapping("/all")
@@ -52,6 +57,28 @@ public class JobSeekerController {
         jobSeekerService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Related Job seeker deleted successfully");
     }
+
+    @PutMapping("/apply")
+    public ResponseEntity applyToJobPost(@RequestParam(name = "id") Long jobSeekerId,@RequestParam(name="jobId")Long jobPostId){
+
+        JobPost jobPost=jobPostService.getById(jobPostId);
+        JobSeeker jobSeeker=jobSeekerService.getById(jobSeekerId);
+        int size=jobPost.getJobSeekersApplied().size();
+
+
+        jobPost.getJobSeekersApplied().add(jobSeeker);
+        jobPost.setJobSeekersApplied(jobPost.getJobSeekersApplied());
+
+
+        if(size==jobPost.getJobSeekersApplied().size()){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Could not apply to job post");
+        }else{
+            return ResponseEntity.status(HttpStatus.OK).body("Applied to job!");
+        }
+
+    }
+
 
 
 }

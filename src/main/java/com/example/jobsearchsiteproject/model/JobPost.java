@@ -19,13 +19,17 @@ public class JobPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date createdDate;
+    private String createdDate;
     private String jobDescription;
     private boolean isActive;
-    @OneToMany
-    private Set<JobLocation> jobLocation;
-    @ManyToOne
-    private Company company;
+    private String jobCity;
+    private String jobCountry;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<JobSeeker> jobSeekersApplied;
+
+
 
 
 

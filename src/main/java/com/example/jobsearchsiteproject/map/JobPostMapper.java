@@ -1,10 +1,10 @@
 package com.example.jobsearchsiteproject.map;
 
 import com.example.jobsearchsiteproject.dto.JobPostDTO;
-import com.example.jobsearchsiteproject.dto.JobSeekerDTO;
 import com.example.jobsearchsiteproject.model.JobPost;
-import com.example.jobsearchsiteproject.model.JobSeeker;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JobPostMapper {
 
     public static JobPostDTO toDTO(JobPost jobPost){
@@ -12,7 +12,8 @@ public class JobPostMapper {
         JobPostDTO jobPostDTO= new JobPostDTO();
         jobPostDTO.setJobDescription(jobPost.getJobDescription());
         jobPostDTO.setActive(jobPost.isActive());
-        jobPostDTO.setCompany(jobPost.getCompany());
+        jobPostDTO.setJobCity(jobPost.getJobCity());
+        jobPostDTO.setJobCountry(jobPost.getJobCountry());
         jobPostDTO.setCreatedDate(jobPost.getCreatedDate());
 
         return jobPostDTO;
@@ -23,8 +24,9 @@ public class JobPostMapper {
         JobPost jobPost= new JobPost();
         jobPost.setJobDescription(jobPostDTO.getJobDescription());
         jobPost.setActive(jobPostDTO.isActive());
-        jobPost.setCompany(jobPostDTO.getCompany());
+        jobPost.setJobCity(jobPostDTO.getJobCity());
         jobPost.setCreatedDate(jobPostDTO.getCreatedDate());
+        jobPost.setJobCountry(jobPostDTO.getJobCountry());
 
         return jobPost;
     }

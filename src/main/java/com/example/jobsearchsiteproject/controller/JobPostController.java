@@ -3,8 +3,11 @@ package com.example.jobsearchsiteproject.controller;
 
 import com.example.jobsearchsiteproject.dto.JobPostDTO;
 import com.example.jobsearchsiteproject.dto.JobSeekerDTO;
+import com.example.jobsearchsiteproject.map.JobPostMapper;
+import com.example.jobsearchsiteproject.model.Company;
 import com.example.jobsearchsiteproject.model.JobPost;
 import com.example.jobsearchsiteproject.model.JobSeeker;
+import com.example.jobsearchsiteproject.services.CompanyService;
 import com.example.jobsearchsiteproject.services.JobPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +21,14 @@ import java.util.List;
 public class JobPostController {
 
     private JobPostService jobPostService;
+    private JobPostMapper jobPostMapper;
+    private CompanyService companyService;
 
-    @Autowired
-    public JobPostController(JobPostService jobPostService){
-        this.jobPostService=jobPostService;
+    public JobPostController(JobPostService jobPostService, JobPostMapper jobPostMapper,CompanyService companyService) {
+        this.jobPostService = jobPostService;
+        this.jobPostMapper = jobPostMapper;
+        this.companyService=companyService;
     }
-
 
     @GetMapping("/all")
     public ResponseEntity getAllJobPosts(){
@@ -38,9 +43,13 @@ public class JobPostController {
         return ResponseEntity.status(HttpStatus.OK).body(byId);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity createNewJobPost(@RequestBody JobPostDTO jobPostDTO){
-        JobPost jobPost = jobPostService.create(jobPostDTO);
+    @RequestMapping(value = "/create/{id}",method = RequestMethod.POST)
+    public ResponseEntity createNewJobPost(@RequestBody JobPostDTO jobPostDTO,@PathVariable("id") Long companyId){
+        JobPost jobPost = jobPostMapper.toEntity(jobPostDTO);
+        Company company= companyService.getById(companyId);
+        company.getJobPostSet().add(jobPost);
+        company.setJobPostSet(company.getJobPostSet());
+        jobPost=jobPostService.create(jobPostDTO);
 
         if(jobPost==null){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
