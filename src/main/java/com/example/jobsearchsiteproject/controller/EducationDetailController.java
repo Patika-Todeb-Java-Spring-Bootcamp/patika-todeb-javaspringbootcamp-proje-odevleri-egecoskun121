@@ -11,11 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
-// ed stands for Education Detail
-@RequestMapping("/api/v1/ed")
+@RequestMapping("/api/v1/education")
 public class EducationDetailController {
 
     private JobSeekerService jobSeekerService;
@@ -52,6 +51,12 @@ public class EducationDetailController {
                     .body("Education detail could not be created successfully");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(educationDetail);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteEducationDetail(@RequestParam(name = "id") Long id) {
+        educationDetailService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body("Related educational detail deleted successfully");
     }
 
 }
