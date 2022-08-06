@@ -23,7 +23,7 @@ public class Company {
     private Integer foundationYear;
     private String companyURL;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<JobPost> jobPostSet;
 
 }
