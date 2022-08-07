@@ -1,6 +1,7 @@
 package com.example.jobsearchsiteproject.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,8 @@ import java.util.Set;
 
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Company {
 
