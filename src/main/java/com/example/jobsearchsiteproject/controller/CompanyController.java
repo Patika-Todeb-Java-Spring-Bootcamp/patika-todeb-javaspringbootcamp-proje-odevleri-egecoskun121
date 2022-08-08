@@ -40,7 +40,7 @@ public class CompanyController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity createNewJobSeeker(@RequestBody CompanyDTO companyDTO){
+    public ResponseEntity createNewCompany(@RequestBody CompanyDTO companyDTO){
         Company company = companyService.create(companyDTO);
 
         if(company==null){
